@@ -18,7 +18,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    mobile = models.CharField(max_length=11, unique=True)
+    mobile = models.CharField(max_length=11, unique=True)   # 手机号码为字符型
 
     class Meta:
         verbose_name = '用户管理'

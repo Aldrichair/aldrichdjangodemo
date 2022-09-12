@@ -1,5 +1,5 @@
 import re
-
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
 # Create your views here.
@@ -78,6 +78,7 @@ import json
 
 
 class RegisterView(APIView):
+    # @csrf_exempt
     def post(self, request):
         # body_bytes = request.data
         # # body_str = body_bytes.decode()
@@ -134,6 +135,15 @@ class RegisterView(APIView):
         # 未加密
         # User.objects.create(username=username, password=password, mobile=mobile)
         # 加密
-        User.objects.create_user(username=username, password=password, mobile=mobile)
+        user = User.objects.create_user(username=username, password=password, mobile=mobile)
+        from django.contrib.auth import login
+        login(request, user)
         return JsonResponse({'code': 0,
                              'errmsg': 'ok'}, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+"""
+实现状态保持
+    在客户端存储信息时使用cookie
+    在服务端存储信息时使用session
+"""
