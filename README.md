@@ -1,0 +1,3 @@
+# aldrichdjangodemo
+一个关于aldrichair的django项目练手
+前后分离 B2C商城项目
