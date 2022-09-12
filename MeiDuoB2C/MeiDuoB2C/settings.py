@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.users',
+    'apps.verification',
     # 跨域子应用配置
     'corsheaders',
 ]
@@ -110,6 +111,13 @@ CACHES = {
     'session': {  # 预留
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTION': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    },
+    'code': {  # 预留
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/2',
         'OPTION': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
