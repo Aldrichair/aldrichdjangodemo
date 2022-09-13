@@ -121,6 +121,13 @@ CACHES = {
         'OPTION': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
+    },
+    'code1': {  # 预留
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/3',
+        'OPTION': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
     }
 }
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
